@@ -19,7 +19,7 @@ class AccumlatorSet(num:Int){
    val x = for(i <- 0 to 127)
             yield count === i.U
   
-   val y = for(i <- 0 until 127)
+   val y = for(i <- 0 to 127)
             yield 1.U << i
   
    val decode = MuxCase(0.U, x zip y)
@@ -32,5 +32,5 @@ class AccumlatorSet(num:Int){
 	acc(i).io.SCLR := decode(i)&&io.clear
    }
    io.dataout := acc(count).io.Q
-   io.validout := 
+   io.validout := RegNext(io.validin)
 }
