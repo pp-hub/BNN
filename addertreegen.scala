@@ -11,13 +11,13 @@ class AdderTreeGen{
    })
    
    // initialize the adder
-   val adder4 =  VecInit(Seq.fill(64)(Module(new SIntFourMFour).io))
-   val adder5 =  VecInit(Seq.fill(32)(Module(new SIntFiveMFive).io))
-   val adder6 =  VecInit(Seq.fill(16)(Module(new SIntSixMSix).io))
-   val adder7 =  VecInit(Seq.fill(8)(Module(new SIntSevenMSeven).io))
-   val adder8 =  VecInit(Seq.fill(4)(Module(new SIntEightMEight).io))
-   val adder9 =  VecInit(Seq.fill(2)(Module(new SIntNineMNine).io))
-   val adder10 =  VecInit(Seq.fill(1)(Module(new SIntTenMTen).io))
+   val adder4 =  VecInit(Seq.fill(64)(Module(new SIntFourAFour).io))
+   val adder5 =  VecInit(Seq.fill(32)(Module(new SIntFiveAFive).io))
+   val adder6 =  VecInit(Seq.fill(16)(Module(new SIntSixASix).io))
+   val adder7 =  VecInit(Seq.fill(8)(Module(new SIntSevenASeven).io))
+   val adder8 =  VecInit(Seq.fill(4)(Module(new SIntEightAEight).io))
+   val adder9 =  VecInit(Seq.fill(2)(Module(new SIntNineANine).io))
+   val adder10 =  VecInit(Seq.fill(1)(Module(new SIntTenATen).io))
    
    val valid = Reg(VecInit(Seq.fill(6)(false.B)))
    valid(0) := io.valid
