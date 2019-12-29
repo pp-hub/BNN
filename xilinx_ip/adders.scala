@@ -11,7 +11,7 @@ class SIntFourAFour extends BlackBox {
     val B = Input(SInt(4.W))   // input wire [3 : 0] B
     val CLK = Input(Clock())    // input wire CLK
     val CE = Input(Bool())      // input wire CE
-    val S = Output(SInt(5W))  // output wire [4 : 0] S  
+    val S = Output(SInt(5.W))  // output wire [4 : 0] S  
   })
 }
 

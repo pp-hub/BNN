@@ -3,14 +3,15 @@ package BNN
 import chisel3._
 import chisel3.util._
 
-class AccumlatorSet(num:Int){
+class AccumulatorSet extends Module{
  val io = IO(new Bundle{
     val datain = Input(SInt(11.W))
-	val dataout = Output(SInt(21.W))
+	 val dataout = Output(SInt(21.W))
     val validin = Input(Bool()) 
     val clear = Input(Bool())	
+    val validout = Output(Bool())
  })
-   val acc = VecInit(Seq.fill(128)(Module(new Accumlator).io)) 
+   val acc = VecInit(Seq.fill(128)(Module(new Accumulator).io)) 
    val count = RegInit(0.U(128.W))
    when(io.validin)
    {
@@ -26,11 +27,11 @@ class AccumlatorSet(num:Int){
    
    for(i<-0 to 127)
    {
-    acc(i).io.B := io.datain
-	acc(i).io.CLK := clock
-	acc(i).io.CE := decode(i)
-	acc(i).io.SCLR := decode(i)&&io.clear
+   acc(i).B := io.datain
+	acc(i).CLK := clock
+	acc(i).CE := decode(i)
+	acc(i).SCLR := decode(i)&&io.clear
    }
-   io.dataout := acc(count).io.Q
+   io.dataout := acc(count).Q
    io.validout := RegNext(io.validin)
 }
